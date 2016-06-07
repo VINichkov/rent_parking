@@ -1,0 +1,32 @@
+//Начало формы поиска
+
+form[role="form"]
+  .form-group.input-group
+    //= select_tag "select", options_for_select(@areas)
+    .input-group-btn.search-panel
+      .button.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#search_concept
+          |Filter by
+        .span.caret
+      ul.dropdown-menu#area
+        -@areas.each do |elem|
+          li
+            a[href="##{elem}"]
+              ="#{elem}"
+
+
+    input.form-control[placeholder="Search..." type="text"]
+    span.input-group-addon#search[ type="button" ]
+      span.glyphicon.glyphicon-search
+  .form-group
+    =select_tag "select", options_for_select(@sities)
+    =select_tag "select", options_for_select(@districts)
+    =select_tag "select", options_for_select(@periods)
+    =select_tag "select", options_for_select(@typeparkings)
+
+  //Окончание формы поиска
+
+
+//.panel П
+//.panel 16
+//.col-lg-2.col-md-2 Личный кабинет

@@ -1,0 +1,78 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require bootstrap
+//= require_tree .
+
+
+function init1() {
+    setEqualHeight();
+    var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+        zoom: 12,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+}
+
+function getAllArea() {
+  var url ="/areas.json";
+  $.ajax({
+      type: "GET",
+      url: url,
+      success: function (data) {
+        data.forEach(function(area){
+          alert(area.name);
+        });
+      }
+    });
+}
+
+
+
+function setEqualHeight() {
+    var myHeight = window.innerHeight;
+    var headerHeight= document.getElementById("head").offsetHeight;
+    var footerHeight = document.getElementById("fot").offsetHeight;
+    var map = document.getElementById("map");
+    map.style.height=myHeight-headerHeight-footerHeight+"px";
+}
+$(document).ready(function(e) {
+    setEqualHeight();
+    $('.search-panel .dropdown-menu').find('a').click(function (e) {
+        e.preventDefault();
+        var param = $(this).attr("href").replace("#", "");
+        var concept = $(this).text();
+        $('.search-panel span#search_concept').text(concept);
+        $('.input-group #search_param').val(param);
+    });
+});
+
+$(window).resize(function () {
+    setEqualHeight();
+
+});
+
++ function ($) {
+    $(document).on('click','#search',function(){
+        getAllArea();
+    });
+
+
+}(jQuery);
+
+

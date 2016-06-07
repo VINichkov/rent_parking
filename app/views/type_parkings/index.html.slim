@@ -1,0 +1,21 @@
+h1 Listing type_parkings
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @type_parkings.each do |type_parking|
+      tr
+        td = type_parking.Name
+        td = link_to 'Show', type_parking
+        td = link_to 'Edit', edit_type_parking_path(type_parking)
+        td = link_to 'Destroy', type_parking, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Type parking', new_type_parking_path

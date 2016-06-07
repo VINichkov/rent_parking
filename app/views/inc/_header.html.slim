@@ -1,0 +1,23 @@
+nav.container-fluid.navbar-default#head
+  .navbar-header
+    img.img_size.img-responsive[src="/assets/Parking.svg/" alt="Parking"]
+  ul.nav.navbar-default.col-md-10.col-lg-10
+    li
+      =render 'inc/search'
+  =areas_path
+
+
+
+
+
+
+
+
+
+
+    //=unless notice.nil?
+      p.notice
+        = notice
+    //=unless alert.nil?
+        p.alert
+          = alert

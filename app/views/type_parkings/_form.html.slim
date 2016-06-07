@@ -1,0 +1,12 @@
+= form_for @type_parking do |f|
+  - if @type_parking.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@type_parking.errors.count, "error")} prohibited this type_parking from being saved:"
+      ul
+        - @type_parking.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :Name
+    = f.text_field :Name
+  .actions = f.submit

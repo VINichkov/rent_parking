@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Fio:
+  = @user.fio
+p
+  strong Email:
+  = @user.email
+p
+  strong Phone:
+  = @user.phone
+p
+  strong Role:
+  = @user.role
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="400"
+   height="400"
+   id="svgServizio"
+   sodipodi:version="0.32"
+   sodipodi:docname="Parking1.svg"
+   inkscape:version="0.48.4 r9939">
+  <metadata
+     id="metadataServizio">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:title />
+        <dc:date>2006-11-15</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Raffaello Di Napoli</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Raffaello Di Napoli</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Raffaello Di Napoli</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:language>it-IT</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>parcheggio</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Indicazione di parcheggio di scambio</dc:description>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="876"
+     inkscape:window-width="1600"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="1"
+     inkscape:cx="223.1014"
+     inkscape:cy="185.69035"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:current-layer="svgServizio"
+     width="400px"
+     height="400px"
+     showgrid="false"
+     inkscape:window-maximized="1" />
+  <defs
+     id="defsServizio" />
+  <rect
+     style="fill:#0063b3;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rectSfondo"
+     width="400"
+     height="400"
+     x="0"
+     y="0"
+     rx="50"
+     ry="50" />
+  <text
+     xml:space="preserve"
+     style="font-size:400px;font-style:normal;font-weight:bold;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial"
+     x="73"
+     y="333"
+     id="textP">P</text>
+  <text
+     xml:space="preserve"
+     style="font-size:65.50463104px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Sans"
+     x="5.0048127"
+     y="267.6539"
+     id="text2988"
+     sodipodi:linespacing="125%"
+     transform="matrix(0.77090095,-0.82138214,0.64728924,0.60750759,0,0)"><tspan
+       sodipodi:role="line"
+       x="5.0048156"
+       y="267.6539"
+       id="tspan2990"><tspan
+         x="5.0048127"
+         y="267.6539"
+         style="font-size:117.90834045px;font-variant:normal;font-weight:500;font-stretch:normal;fill:#ff6600;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
+         id="tspan2992">FOR</tspan><tspan
+         dx="0"
+         x="236.21571"
+         y="267.6539"
+         style="font-size:117.90834045px;font-variant:normal;font-weight:500;font-stretch:normal;fill:#ff6600;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
+         id="tspan2994" /></tspan><tspan
+       sodipodi:role="line"
+       x="-29.4235"
+       y="415.03931"
+       id="tspan2996"><tspan
+         x="-29.423494"
+         y="415.03931"
+         style="font-size:117.90834045px;font-variant:normal;font-weight:500;font-stretch:normal;fill:#ff6600;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
+         id="tspan2998">RENT</tspan></tspan></text>
+</svg>

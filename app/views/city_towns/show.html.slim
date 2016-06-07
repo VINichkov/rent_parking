@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @city_town.name
+p
+  strong Area:
+  = @city_town.area
+
+= link_to 'Edit', edit_city_town_path(@city_town)
+'|
+= link_to 'Back', city_towns_path

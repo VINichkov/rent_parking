@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Ad:
+  = @image.ad
+p
+  strong Name:
+  = @image.name
+p
+  strong Path:
+  = @image.path
+p
+  strong Content:
+  = @image.content
+
+= link_to 'Edit', edit_image_path(@image)
+'|
+= link_to 'Back', images_path

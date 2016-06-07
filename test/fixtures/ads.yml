@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  district_id: 
+  type_parking_id: 
+  user_id: 
+  period_id: 
+  content: MyText
+
+two:
+  district_id: 
+  type_parking_id: 
+  user_id: 
+  period_id: 
+  content: MyText
