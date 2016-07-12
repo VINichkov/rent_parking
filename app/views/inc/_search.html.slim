@@ -1,28 +1,70 @@
 //Начало формы поиска
 
+
+
+
 form[role="form"]
-  .form-group.input-group
-    //= select_tag "select", options_for_select(@areas)
-    .input-group-btn.search-panel
-      .button.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
-        span#search_concept
-          |Filter by
+
+  .form-group.input-group.search-panel
+    //.input-group-btn.search-panel
+
+      //Начало элемента выбора Региона
+
+
+      //.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#search_concept[id_area=0]
+          |Area
         .span.caret
-      ul.dropdown-menu#area
+      //ul.dropdown-menu#area
         -@areas.each do |elem|
           li
-            a[href="##{elem}"]
-              ="#{elem}"
-
-
+            .item_content
+              .glyphicon.glyphicon-plus
+              a[href="##{elem.name}" id_area=elem.id]
+                ="#{elem.name}"
+    span.btn.btn-default.input-group-addon#search_concept[data-toggle="modal" data-target="#selectCity1" ]
+    //Форма поиска
     input.form-control[placeholder="Search..." type="text"]
-    span.input-group-addon#search[ type="button" ]
+    //Кнопка поиска
+    span.btn.btn-default.input-group-addon#search[ type="button" ]
       span.glyphicon.glyphicon-search
+
+  //Форма дополнительных параметров
+
   .form-group
-    =select_tag "select", options_for_select(@sities)
-    =select_tag "select", options_for_select(@districts)
-    =select_tag "select", options_for_select(@periods)
-    =select_tag "select", options_for_select(@typeparkings)
+    //выбор города
+    .input-group-btn.dop_panel
+      .btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#selectCity[id_city=0]
+          |Не выбрано
+        .span.caret
+      ul.dropdown-menu#city
+
+    .input-group-btn.dop_panel
+      .btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#selectDestrict[id_destrict=0]
+          |Не выбрано
+        .span.caret
+      ul.dropdown-menu#destrict
+
+    .input-group-btn.dop_panel
+      .btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#selectPeriod[id_period=0]
+          |Не выбрано
+        .span.caret
+      ul.dropdown-menu#period
+
+    .input-group-btn.dop_panel
+      .btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
+        span#selectTypeParking[id_typeparking]
+          |Не выбрано
+        .span.caret
+      ul.dropdown-menu#typeparking
+
+    //=select_tag "select", options_for_select(@sities)
+    //=select_tag "select", options_for_select(@districts)
+    //=select_tag "select", options_for_select(@periods)
+    //=select_tag "select", options_for_select(@typeparkings)
 
   //Окончание формы поиска
 

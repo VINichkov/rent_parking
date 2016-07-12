@@ -21,6 +21,24 @@ class CityTownsController < ApplicationController
   def edit
   end
 
+  #/city_towns/1/find.json
+  def find
+    @city_list=CityTown.where(["area_id=:id", {id:params[:id]}])
+    puts "___________Зашли в функцию"
+    if @city_list.empty?
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        format.json {render json: "[{\"name\":\"nil\"}]"}
+      end
+    else
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        format.json {render 'city_towns/find'}
+      end
+    end
+
+  end
+
   # POST /city_towns
   # POST /city_towns.json
   def create

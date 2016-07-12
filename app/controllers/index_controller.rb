@@ -2,10 +2,8 @@ class IndexController < ApplicationController
 
   def index
     #Инициализация переменных для экранной формы
-    @areas = []
-    Area.all.each do |elem|
-      @areas<<elem.name
-    end
+    @areas = Area.all
+
 
     @sities = []
     CityTown.all.each do |elem|

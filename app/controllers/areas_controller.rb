@@ -5,8 +5,6 @@ class AreasController < ApplicationController
   # GET /areas.json
   def index
     @areas = Area.all
-    puts "_________________"
-    puts params
     respond_to do |format|
         format.html {render 'areas/index'}
         format.json  {render 'areas/index'}
@@ -14,9 +12,6 @@ class AreasController < ApplicationController
         end
   end
 
-  def get_all_area_json
-
-  end
   # GET /areas/1
   # GET /areas/1.json
   def show
@@ -69,6 +64,31 @@ class AreasController < ApplicationController
       format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def set_area_session
+    session[:area]=params[:id]
+    puts "_________________Задали параметр #{session[:area]}"
+    respond_to do |format|
+      format.json {render json: "{\"status\":\"true\"}"}
+      format.any {render json: "{\"status\":\"true\"}"}
+    end
+  end
+
+  def get_area_session
+    @get_area = Area.find_by_id(session[:area])
+    if @get_area.nil?
+      puts "_________________Получили значение nil"
+      respond_to do |format|
+        format.json {render json: "{id:0, \"name\":\"nil\"}"}
+      end
+    else
+      puts "_________________Получили значение #{@get_area.name}"
+      respond_to do |format|
+        format.json {render 'areas/get_area_session'}
+      end
+    end
+
   end
 
   private

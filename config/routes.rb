@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  #Роуты json
+  get 'city_towns/:id/find' => 'city_towns#find', as: :find_city
+  get 'areas/:id/set_area_session' =>'areas#set_area_session', as: :set_area_session
+  get 'areas/get_area_session' => 'areas#get_area_session', as: :get_area_session
+
   devise_for :users
   resources :images
   resources :ads
@@ -16,11 +21,13 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'index#index'
   resources :properts
+
+  #Роуты на документацию
   get 'info/socket'
-
   get 'info/convention'
-
   get 'info/offer'
+
+
 
   #роут для devise
   #root to: "home#index"
