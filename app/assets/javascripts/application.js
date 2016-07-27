@@ -12,20 +12,57 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
-//= require bootstrap
+//=require jquery.geocomplete
 //=require_tree .
 
 
 function init() {
-//initMap();
-initArea();
+initMap();
+//initSity();
 }
+
+
+
+
+
+
+//Инициализация карты, поиска городов и изначальная геолокация
+$(function(){
+
+    var options = {
+        map: ".map_canvas",
+        location: 'ru'
+    };
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            //Если позиция определена
+            (function (pozition) {
+                options['location'] = new Array(pozition.coords.latitude, pozition.coords.longitude);
+                $("#geocomplete").geocomplete(options);
+                    }),
+            //Если позиция не определена или возникла ошибка, то выводим карту россии
+            (function (err) {
+                //TODO доделать отлавливание ошибки
+                alert(err.code + ' : ' +err.message);
+                $("#geocomplete").geocomplete(options);
+            }),
+            {enableHighAccuracy:false});
+    } else {
+        //если браузер не поддерживает геолокацию, то выводим россию
+        //TODO доделать обработку неподдерживаемых браузеров
+        alert('Вошли сюда22222');
+        $("#geocomplete").geocomplete(options);
+    };
+
+
+});
 
 //--------инициализация
 //инициализация карты
 function  initMap() {
-  setEqualHeight();
   var myLatlng = new google.maps.LatLng(-34.397, 150.644);
   var myOptions = {
     zoom: 12,
@@ -35,63 +72,3 @@ function  initMap() {
   var map = new google.maps.Map(document.getElementById("map"), myOptions);
 }
 
-
-function initArea() {
-  var area = getArea();
-  if (area.name === "nil") {
-    area = getAreaIP();
-  }
-    alert('Дошли сюда');
-  $('.search-panel span#search_concept').text(area.name);
-  $('.search-panel span#search_concept').attr('id_area',area.id);
-  viewCity(area.id);
-}
-
-
-//--------конец инициализации
-//Изменение размера блока
-function setEqualHeight() {
-  var myHeight = window.innerHeight;
-  var headerHeight= document.getElementById("head").offsetHeight;
-  var footerHeight = document.getElementById("fot").offsetHeight;
-  var map = document.getElementById("map");
-  map.style.height=myHeight-headerHeight-footerHeight+"px";
-}
-
-//Элементы выбора
-/*
-function selectArea(e) {
-  $('.search-panel .dropdown-menu').find('a').click(function (e) {
-    e.preventDefault();
-    var param = $(this).attr("href").replace("#", "");
-    var concept = $(this).text();
-    var id_area = $(this).attr("id_area");
-    viewCity(id_area);
-    setArea(id_area);
-    $('.search-panel span#search_concept').text(concept);
-    $('.search-panel span#search_concept').attr('id_area',id_area);
-  });
-}
-*/
-//Обработка событий
-//Поиск
-/*
-+ function ($) {
-    $(document).on('click','#search',function(){
-      $('.search-panel span#search_concept').text('sdfsdfsd');
-    });
-
-}(jQuery);
-*/
-//Изменение размера окна
-/*$(window).resize(function () {
-  setEqualHeight();
-
-});
-*/
-//Выбор области
-/*
-$(document).ready(function(e) {
-  selectArea(e);
-});
-*/

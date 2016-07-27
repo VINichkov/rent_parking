@@ -1,36 +1,16 @@
 //Начало формы поиска
 
+li
+  input.round.large-6.small-6.medium-6#geocomplete[placeholder="Search..." type="text" autocomplete="off"]
+//Форма поиска
+li
+  form
+    input.round[placeholder="Search..." type="text" autocomplete="off"]
+  //Кнопка поиска
+span.btn.btn-default.input-group-addon#search[ type="button" ]
+   span.glyphicon.glyphicon-search
 
-
-
-form[role="form"]
-
-  .form-group.input-group.search-panel
-    //.input-group-btn.search-panel
-
-      //Начало элемента выбора Региона
-
-
-      //.btn.btn-default.dropdown-toggle[type="button" data-toggle="dropdown"]
-        span#search_concept[id_area=0]
-          |Area
-        .span.caret
-      //ul.dropdown-menu#area
-        -@areas.each do |elem|
-          li
-            .item_content
-              .glyphicon.glyphicon-plus
-              a[href="##{elem.name}" id_area=elem.id]
-                ="#{elem.name}"
-    span.btn.btn-default.input-group-addon#search_concept[data-toggle="modal" data-target="#selectCity1" ]
-    //Форма поиска
-    input.form-control[placeholder="Search..." type="text"]
-    //Кнопка поиска
-    span.btn.btn-default.input-group-addon#search[ type="button" ]
-      span.glyphicon.glyphicon-search
-
-  //Форма дополнительных параметров
-
+//Форма дополнительных параметров
   .form-group
     //выбор города
     .input-group-btn.dop_panel

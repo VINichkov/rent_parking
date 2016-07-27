@@ -1,0 +1,1 @@
+json.extract! @get_city, :id, :name, :created_at, :updated_at

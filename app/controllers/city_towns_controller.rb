@@ -79,6 +79,48 @@ class CityTownsController < ApplicationController
     end
   end
 
+  #Функция для сохранения города не сессии
+  def set_city_session
+    session[:city]=params[:id]
+    puts "_________________Задали параметр #{session[:city]}"
+    respond_to do |format|
+      format.json {render json: "{\"status\":\"true\"}"}
+      format.any {render json: "{\"status\":\"true\"}"}
+    end
+  end
+#Todo Переделать get
+  #Функция для получения города с сессии
+  def get_city_session
+    @get_city = CityTown.find_by_id(session[:city])
+    if @get_city.nil?
+      puts "_________________Получили значение nil"
+      respond_to do |format|
+        format.json {render json: "{id:0, \"name\":\"nil\"}"}
+      end
+    else
+      puts "_________________Получили значение #{@get_city.name}"
+      respond_to do |format|
+        format.json {render 'city_towns/get_city_session'}
+      end
+    end
+  end
+
+  #Функция для получения города по региону.
+  def get_capital
+      @get_city = CityTown.where capital: true, area_id: params[:id]
+      if @get_city.nil?
+          puts "_________________Получили значение nil"
+          respond_to do |format|
+              format.json {render json: "{id:0, \"name\":\"nil\"}"}
+          end
+      else
+          puts "_________________Получили значение #{@get_city.name}"
+          respond_to do |format|
+              format.json {render 'city_towns/get_capital'}
+          end
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_city_town

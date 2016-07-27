@@ -1,14 +1,15 @@
 //Модаль для выбора региона. Вызывается из поиска
-.modal.fade#selectCity1[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
-  .modal-dialog
-    .modal-content
-      .modal-header
-        .button.close[type="button" data-dismiss="modal" aria-hidden="true"] |&times;
-        h4.modal-title#myModalLabel
-          |Название модали
-      .modal-body
-        |Текст
-      .modal-footer
-        |текс
-        button.btn.btn-default[type="button" data-dismiss="modal"] Закрыть
-        button.btn.btn-default[type="button"] Сохранить изменения
+.reveal.round#exampleModal2[data-reveal]
+  h2
+    |Выбор города
+  //=select_tag "select", options_for_select(@areas)
+  //=select_tag "select", options_for_select(@sities)
+  button.close-button.round[data-close aria-label="Close reveal" type="button"]
+    span[aria-hidden="true"]
+      |&times
+  .row
+    button.success.button.small-3.medium-3.large-3.left.round
+      |ОК
+    button.alert.button.small-3.medium-3.large-3.round[data-close]
+      |Отмена
+      //TODO Необходимо доделать форму

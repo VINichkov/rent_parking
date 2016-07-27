@@ -9,39 +9,34 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *= require bootstrap
+ *
  *= require_tree .
  *= require_self
+ *= require foundation
+//= require foundation_and_overrides
+
  */
-@import "bootstrap";
-@import "bootstrap-theme";
+//@import "foundation_and_overrides";
 
-.content{
-  //height: max();
-  background: #2aabd2;
-  resize: vertical;
+//Скругление на формы и кнопки
+.round{
+  border-radius: 10px;
 }
 
-.obloco{
-  //margin-bottom: 10px;
-  //padding: 5px;
-  //opacity: 0.8;
-  border-radius: 5px;
-  background:#e8e8e8;
-}
-.img_size{
-  width: 180px;
-  height: 150px;
+.map_canvas{
+  height: 556px;
 }
 
-#map{
-  height: 100px;
+.footer {
+  background-color: #e6e6e6;
+  padding: 2rem 4rem;
+  text-align: center;
+  color: black;
+  li{
+    vertical-align: middle;
+    display: table-cell;
+  }
 }
 
 
-//эксперемент с раскрывающемся списком
-.item_content{
-  padding: 0;
-  margin: 0;
-  display: block;
-}
+

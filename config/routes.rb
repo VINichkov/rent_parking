@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   #Роуты json
   get 'city_towns/:id/find' => 'city_towns#find', as: :find_city
-  get 'areas/:id/set_area_session' =>'areas#set_area_session', as: :set_area_session
-  get 'areas/get_area_session' => 'areas#get_area_session', as: :get_area_session
+  #Todo City
+  get 'city_towns/:id/set_city_session' =>'city_towns#set_city_session', as: :set_city_session
+  get 'city_towns/get_city_session' => 'city_towns#get_city_session', as: :get_city_session
+  get 'city_towns/:id/get_capital' => 'city_towns#get_capital', as: :get_capital
 
   devise_for :users
   resources :images

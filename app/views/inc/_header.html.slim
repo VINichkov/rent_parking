@@ -1,23 +1,25 @@
-nav.container-fluid.navbar-default#head
+.title-bar[data-responsivetoggle="oof40v-responsivetoggle" style="display: none;" data-responsive-toggle="realEstateMenu" data-hide-for="small"]
+  button.menu-icon[type="button" data-toggle=""]
+  .title-bar-title
+    |Меню
+#realEstateMenu.top-bar[style="display: block;"]
+  .title-bar-left
+    ul.menu.accordion-menu[data-responsivemenu="lymgzo-responsivemenu" data-accordionmenu="r1k2o0-accordionmenu" aria-multiselectable="true" role="tablist" data-responsive-menu="accordion"]
+      =render 'inc/search'
+  .title-bar-right
+    ul.menu
+      li
+        a[href="#"]
+          |My Account
+      li
+        a.button
+          |Login
+
+
+//Todo переработать логотип и воткнуть
+//nav.container-fluid.navbar-default#head
   .navbar-header
     img.img_size.img-responsive[src="/assets/Parking.svg/" alt="Parking"]
   ul.nav.navbar-default.col-md-10.col-lg-10
     li
       =render 'inc/search'
-
-
-
-
-
-
-
-
-
-
-
-    //=unless notice.nil?
-      p.notice
-        = notice
-    //=unless alert.nil?
-        p.alert
-          = alert

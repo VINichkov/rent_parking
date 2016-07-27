@@ -66,30 +66,9 @@ class AreasController < ApplicationController
     end
   end
 
-  def set_area_session
-    session[:area]=params[:id]
-    puts "_________________Задали параметр #{session[:area]}"
-    respond_to do |format|
-      format.json {render json: "{\"status\":\"true\"}"}
-      format.any {render json: "{\"status\":\"true\"}"}
-    end
-  end
 
-  def get_area_session
-    @get_area = Area.find_by_id(session[:area])
-    if @get_area.nil?
-      puts "_________________Получили значение nil"
-      respond_to do |format|
-        format.json {render json: "{id:0, \"name\":\"nil\"}"}
-      end
-    else
-      puts "_________________Получили значение #{@get_area.name}"
-      respond_to do |format|
-        format.json {render 'areas/get_area_session'}
-      end
-    end
 
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
