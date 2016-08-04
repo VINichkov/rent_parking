@@ -12,63 +12,45 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require bootstrap.js
 //= require turbolinks
 //=require jquery.geocomplete
 //=require_tree .
 
-
-function init() {
-initMap();
-//initSity();
-}
-
-
-
-
-
-
-//Инициализация карты, поиска городов и изначальная геолокация
 $(function(){
-
+    autoheight();
     var options = {
         map: ".map_canvas",
         location: 'ru'
     };
-
-    if (navigator.geolocation) {
+    //TODO На время отключил данный блок, чтобы ускорить загрузку
+    if (navigator.geolocation ) {
         navigator.geolocation.getCurrentPosition(
             //Если позиция определена
             (function (pozition) {
+                //Todo гдето косяк. Работает нестабильно.
                 options['location'] = new Array(pozition.coords.latitude, pozition.coords.longitude);
                 $("#geocomplete").geocomplete(options);
                     }),
             //Если позиция не определена или возникла ошибка, то выводим карту россии
             (function (err) {
                 //TODO доделать отлавливание ошибки
-                alert(err.code + ' : ' +err.message);
+                //alert(err.code + ' : ' +err.message);
                 $("#geocomplete").geocomplete(options);
             }),
-            {enableHighAccuracy:false});
+            {enableHighAccuracy:false, timeout:10000});
     } else {
         //если браузер не поддерживает геолокацию, то выводим россию
         //TODO доделать обработку неподдерживаемых браузеров
-        alert('Вошли сюда22222');
+
         $("#geocomplete").geocomplete(options);
     };
 
-
 });
+//TODO доделать ресайз
+$(window).on('resize',autoheight());
 
-//--------инициализация
-//инициализация карты
-function  initMap() {
-  var myLatlng = new google.maps.LatLng(-34.397, 150.644);
-  var myOptions = {
-    zoom: 12,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById("map"), myOptions);
+//TODO Еще раз проверить функцию
+function autoheight() {
+ $(".map_canvas").height($(window).height()-$('footer').height()-$('#menu').height());//(-$('footer').style.maxHeight-$('#menu').style.maxHeight);
 }
-

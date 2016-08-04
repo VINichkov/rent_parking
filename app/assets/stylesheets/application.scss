@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require foundation
-//= require foundation_and_overrides
+ *= require bootstrap.css
+//
 
  */
 //@import "foundation_and_overrides";
@@ -22,21 +22,17 @@
 .round{
   border-radius: 10px;
 }
-
-.map_canvas{
-  height: 556px;
-}
-
-.footer {
-  background-color: #e6e6e6;
-  padding: 2rem 4rem;
-  text-align: center;
-  color: black;
-  li{
-    vertical-align: middle;
-    display: table-cell;
-  }
+body{
+  height: 100%;
 }
 
 
+//............................
+//Расширение стили
+
+.input-group-addon.orange{
+  color: #fff;
+  background-color: #ff6700;
+  border-color: #eea236;
+}
 
