@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Patch:
+  = @patchphoto.patch
+p
+  strong Parking:
+  = @patchphoto.parking
+
+= link_to 'Edit', edit_patchphoto_path(@patchphoto)
+'|
+= link_to 'Back', patchphotos_path

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  adress: MyString
+  latitude: 1.5
+  langitude: 1.5
+  accessible: false
+  open24: false
+  covered: false
+  sitestaff: false
+  overnight: false
+  valet: false
+  restrictions: false
+  descriptions: false
+  price: 1.5
+  typerent: false
+  user_id: 
+
+two:
+  name: MyString
+  adress: MyString
+  latitude: 1.5
+  langitude: 1.5
+  accessible: false
+  open24: false
+  covered: false
+  sitestaff: false
+  overnight: false
+  valet: false
+  restrictions: false
+  descriptions: false
+  price: 1.5
+  typerent: false
+  user_id: 

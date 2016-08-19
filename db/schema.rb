@@ -11,61 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715085119) do
+ActiveRecord::Schema.define(version: 20160817092855) do
 
-  create_table "ads", force: :cascade do |t|
-    t.integer  "district_id",     limit: 4
-    t.integer  "type_parking_id", limit: 4
-    t.integer  "user_id",         limit: 4
-    t.integer  "period_id",       limit: 4
-    t.text     "content",         limit: 65535
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "datetimebegin"
+    t.datetime "datetimeend"
+    t.integer  "user_id",       limit: 4
+    t.integer  "parking_id",    limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "ads", ["district_id"], name: "index_ads_on_district_id", using: :btree
-  add_index "ads", ["period_id"], name: "index_ads_on_period_id", using: :btree
-  add_index "ads", ["type_parking_id"], name: "index_ads_on_type_parking_id", using: :btree
-  add_index "ads", ["user_id"], name: "index_ads_on_user_id", using: :btree
+  add_index "bookings", ["parking_id"], name: "index_bookings_on_parking_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
-  create_table "areas", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "city_towns", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "area_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.boolean  "capital"
-  end
-
-  add_index "city_towns", ["area_id"], name: "index_city_towns_on_area_id", using: :btree
-
-  create_table "districts", force: :cascade do |t|
+  create_table "parkings", force: :cascade do |t|
     t.string   "name",         limit: 255
-    t.integer  "city_town_id", limit: 4
+    t.string   "adress",       limit: 255
+    t.float    "latitude",     limit: 24
+    t.float    "langitude",    limit: 24
+    t.boolean  "accessible"
+    t.boolean  "open24"
+    t.boolean  "covered"
+    t.boolean  "sitestaff"
+    t.boolean  "overnight"
+    t.boolean  "valet"
+    t.boolean  "restrictions"
+    t.boolean  "descriptions"
+    t.float    "price",        limit: 24
+    t.boolean  "typerent"
+    t.integer  "user_id",      limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
-  add_index "districts", ["city_town_id"], name: "index_districts_on_city_town_id", using: :btree
+  add_index "parkings", ["user_id"], name: "index_parkings_on_user_id", using: :btree
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "ad_id",      limit: 4
-    t.string   "name",       limit: 255
-    t.string   "path",       limit: 255
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "images", ["ad_id"], name: "index_images_on_ad_id", using: :btree
-
-  create_table "periods", force: :cascade do |t|
-    t.string   "name",       limit: 255
+  create_table "patchphotos", force: :cascade do |t|
+    t.string   "patch",      limit: 255
+    t.integer  "parking_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -79,25 +63,22 @@ ActiveRecord::Schema.define(version: 20160715085119) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "type_parkings", force: :cascade do |t|
-    t.string   "Name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "code",         limit: 255
+    t.string   "name",         limit: 255
+    t.text     "descriptions", limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "fio",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "surname",                limit: 255
     t.string   "login",                  limit: 255
-    t.string   "phone",                  limit: 255
+    t.string   "email",                  limit: 255
+    t.string   "namberphone",            limit: 255
     t.integer  "role_id",                limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -109,15 +90,12 @@ ActiveRecord::Schema.define(version: 20160715085119) do
     t.string   "last_sign_in_ip",        limit: 255
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
-  add_foreign_key "ads", "districts"
-  add_foreign_key "ads", "periods"
-  add_foreign_key "ads", "type_parkings"
-  add_foreign_key "ads", "users"
-  add_foreign_key "city_towns", "areas"
-  add_foreign_key "districts", "city_towns"
-  add_foreign_key "images", "ads"
+  add_foreign_key "bookings", "parkings"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "parkings", "users"
   add_foreign_key "users", "roles"
 end

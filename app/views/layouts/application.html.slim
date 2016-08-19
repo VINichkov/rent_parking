@@ -7,7 +7,9 @@ html
     script[type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"]
     = csrf_meta_tags
 
-  body[onload="init()"]
+  body
+    =render 'inc/header'
     = yield
+    =render 'inc/footer'
 
 

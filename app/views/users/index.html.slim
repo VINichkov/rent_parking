@@ -3,9 +3,11 @@ h1 Listing users
 table
   thead
     tr
-      th Fio
+      th Name
+      th Surname
+      th Login
       th Email
-      th Phone
+      th Namberphone
       th Role
       th
       th
@@ -14,9 +16,11 @@ table
   tbody
     - @users.each do |user|
       tr
-        td = user.fio
+        td = user.name
+        td = user.surname
+        td = user.login
         td = user.email
-        td = user.phone
+        td = user.namberphone
         td = user.role
         td = link_to 'Show', user
         td = link_to 'Edit', edit_user_path(user)

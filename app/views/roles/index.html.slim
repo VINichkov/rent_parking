@@ -3,7 +3,9 @@ h1 Listing roles
 table
   thead
     tr
+      th Code
       th Name
+      th Descriptions
       th
       th
       th
@@ -11,7 +13,9 @@ table
   tbody
     - @roles.each do |role|
       tr
+        td = role.code
         td = role.name
+        td = role.descriptions
         td = link_to 'Show', role
         td = link_to 'Edit', edit_role_path(role)
         td = link_to 'Destroy', role, data: {:confirm => 'Are you sure?'}, :method => :delete

@@ -1,0 +1,15 @@
+= form_for @patchphoto do |f|
+  - if @patchphoto.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@patchphoto.errors.count, "error")} prohibited this patchphoto from being saved:"
+      ul
+        - @patchphoto.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :patch
+    = f.text_field :patch
+  .field
+    = f.label :parking
+    = f.text_field :parking
+  .actions = f.submit

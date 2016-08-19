@@ -7,6 +7,12 @@
           li = message
 
   .field
+    = f.label :code
+    = f.text_field :code
+  .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :descriptions
+    = f.text_area :descriptions
   .actions = f.submit

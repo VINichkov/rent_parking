@@ -1,0 +1,51 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @parking.name
+p
+  strong Adress:
+  = @parking.adress
+p
+  strong Latitude:
+  = @parking.latitude
+p
+  strong Langitude:
+  = @parking.langitude
+p
+  strong Accessible:
+  = @parking.accessible
+p
+  strong Open24:
+  = @parking.open24
+p
+  strong Covered:
+  = @parking.covered
+p
+  strong Sitestaff:
+  = @parking.sitestaff
+p
+  strong Overnight:
+  = @parking.overnight
+p
+  strong Valet:
+  = @parking.valet
+p
+  strong Restrictions:
+  = @parking.restrictions
+p
+  strong Descriptions:
+  = @parking.descriptions
+p
+  strong Price:
+  = @parking.price
+p
+  strong Typerent:
+  = @parking.typerent
+p
+  strong User:
+  = @parking.user
+
+= link_to 'Edit', edit_parking_path(@parking)
+'|
+= link_to 'Back', parkings_path

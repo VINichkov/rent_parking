@@ -1,21 +1,12 @@
 Rails.application.routes.draw do
-  #Роуты json
-  get 'city_towns/:id/find' => 'city_towns#find', as: :find_city
-  #Todo City
-  get 'city_towns/:id/set_city_session' =>'city_towns#set_city_session', as: :set_city_session
-  get 'city_towns/get_city_session' => 'city_towns#get_city_session', as: :get_city_session
-  get 'city_towns/:id/get_capital' => 'city_towns#get_capital', as: :get_capital
+
 
   devise_for :users
-  resources :images
-  resources :ads
-  resources :users
+  resources :parkings
+  resources :bookings
+  resources :patchphotos
+  #resources :users
   resources :roles
-  resources :periods
-  resources :districts
-  resources :city_towns
-  resources :areas
-  resources :type_parkings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

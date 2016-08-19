@@ -1,0 +1,23 @@
+h1 Listing patchphotos
+
+table
+  thead
+    tr
+      th Patch
+      th Parking
+      th
+      th
+      th
+
+  tbody
+    - @patchphotos.each do |patchphoto|
+      tr
+        td = patchphoto.patch
+        td = patchphoto.parking
+        td = link_to 'Show', patchphoto
+        td = link_to 'Edit', edit_patchphoto_path(patchphoto)
+        td = link_to 'Destroy', patchphoto, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Patchphoto', new_patchphoto_path

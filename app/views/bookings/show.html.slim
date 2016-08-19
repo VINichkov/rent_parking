@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Datetimebegin:
+  = @booking.datetimebegin
+p
+  strong Datetimeend:
+  = @booking.datetimeend
+p
+  strong User:
+  = @booking.user
+p
+  strong Parking:
+  = @booking.parking
+
+= link_to 'Edit', edit_booking_path(@booking)
+'|
+= link_to 'Back', bookings_path

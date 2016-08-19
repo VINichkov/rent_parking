@@ -1,0 +1,54 @@
+= form_for @parking do |f|
+  - if @parking.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@parking.errors.count, "error")} prohibited this parking from being saved:"
+      ul
+        - @parking.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :adress
+    = f.text_field :adress
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :langitude
+    = f.text_field :langitude
+  .field
+    = f.label :accessible
+    = f.check_box :accessible
+  .field
+    = f.label :open24
+    = f.check_box :open24
+  .field
+    = f.label :covered
+    = f.check_box :covered
+  .field
+    = f.label :sitestaff
+    = f.check_box :sitestaff
+  .field
+    = f.label :overnight
+    = f.check_box :overnight
+  .field
+    = f.label :valet
+    = f.check_box :valet
+  .field
+    = f.label :restrictions
+    = f.check_box :restrictions
+  .field
+    = f.label :descriptions
+    = f.check_box :descriptions
+  .field
+    = f.label :price
+    = f.text_field :price
+  .field
+    = f.label :typerent
+    = f.check_box :typerent
+  .field
+    = f.label :user
+    = f.text_field :user
+  .actions = f.submit

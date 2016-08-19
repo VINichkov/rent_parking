@@ -30,6 +30,8 @@ gem 'slim'
 gem 'devise'
 gem 'cancancan'
 
+gem 'http_accept_language'
+
 #gem 'foundation-rails'
 
 # Use ActiveModel has_secure_password

@@ -1,0 +1,49 @@
+h1 Listing parkings
+
+table
+  thead
+    tr
+      th Name
+      th Adress
+      th Latitude
+      th Langitude
+      th Accessible
+      th Open24
+      th Covered
+      th Sitestaff
+      th Overnight
+      th Valet
+      th Restrictions
+      th Descriptions
+      th Price
+      th Typerent
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @parkings.each do |parking|
+      tr
+        td = parking.name
+        td = parking.adress
+        td = parking.latitude
+        td = parking.langitude
+        td = parking.accessible
+        td = parking.open24
+        td = parking.covered
+        td = parking.sitestaff
+        td = parking.overnight
+        td = parking.valet
+        td = parking.restrictions
+        td = parking.descriptions
+        td = parking.price
+        td = parking.typerent
+        td = parking.user
+        td = link_to 'Show', parking
+        td = link_to 'Edit', edit_parking_path(parking)
+        td = link_to 'Destroy', parking, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Parking', new_parking_path

@@ -1,8 +1,14 @@
 p#notice = notice
 
 p
+  strong Code:
+  = @role.code
+p
   strong Name:
   = @role.name
+p
+  strong Descriptions:
+  = @role.descriptions
 
 = link_to 'Edit', edit_role_path(@role)
 '|
