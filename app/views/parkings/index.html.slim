@@ -1,14 +1,12 @@
 h1 Listing parkings
 
-table
+table.table.table-striped
   thead
     tr
-      th Name
-      th Adress
-      th Latitude
-      th Langitude
+      th Наименование
+      th Адрес
       th Accessible
-      th Open24
+      th
       th Covered
       th Sitestaff
       th Overnight
@@ -40,10 +38,10 @@ table
         td = parking.price
         td = parking.typerent
         td = parking.user
-        td = link_to 'Show', parking
-        td = link_to 'Edit', edit_parking_path(parking)
-        td = link_to 'Destroy', parking, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Открыть', parking, class:"btn btn-success"
+        td = link_to 'Редактировать', edit_parking_path(parking), class:"btn btn-warning"
+        td = link_to 'Удалить', parking, data: {:confirm => 'Are you sure?'}, :method => :delete, class:"btn btn-danger"
 
 br
 
-= link_to 'New Parking', new_parking_path
+= link_to 'Новая парковка', new_parking_path, class:"btn btn-success"

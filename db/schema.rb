@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817092855) do
+ActiveRecord::Schema.define(version: 20160911094715) do
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "datetimebegin"
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20160817092855) do
   add_index "parkings", ["user_id"], name: "index_parkings_on_user_id", using: :btree
 
   create_table "patchphotos", force: :cascade do |t|
-    t.string   "patch",      limit: 255
     t.integer  "parking_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "image_uid",  limit: 255
   end
 
   create_table "properts", force: :cascade do |t|

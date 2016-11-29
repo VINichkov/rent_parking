@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
              else
                 http_accept_language.compatible_language_from(I18n.available_locales)
              end
+    #TODO отключить принудительную локацию
+    locale = 'ru'
     puts "___________________#{locale}_________________"
   if locale && I18n.available_locales.include?(locale.to_sym)
     session[:locale] = I18n.locale = locale.to_sym

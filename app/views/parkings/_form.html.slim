@@ -1,54 +1,81 @@
-= form_for @parking do |f|
-  - if @parking.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@parking.errors.count, "error")} prohibited this parking from being saved:"
-      ul
-        - @parking.errors.full_messages.each do |message|
-          li = message
+.row
+  = form_for(@parking, html:{role:"form", class:"col-lg-7" , method: :post, enctype: "multipart/form-data"})  do |f|
+    - if @parking.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@parking.errors.count, "error")} prohibited this parking from being saved:"
+        ul
+          - @parking.errors.full_messages.each do |message|
+            li = message
+    .form-group
+      = f.label :name, "Наименование парковки"
+      = f.text_field :name, type:"Name", class:"form-control", placeholder:"Введите наименование", title: "Введите наименование парковки"
+    .form-group
+      = f.label :adress, "Адрес"
+      .input-group
+        = f.text_field :adress, class:"form-control", id:"addres", "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Введите адрес парковки"
+        span.btn.input-group-addon#search-adr
+          span.glyphicon.glyphicon-flag
+    .map_edit.col-lg-12#map_edit
+    .form-group
+      = f.text_field :latitude, id:'lat'
+      //, style:"display: none"
+      = f.text_field :langitude, id:'lan'
+      //, style:"display: none"
+    .row
+      .form-group.col-lg-6
+        = f.label :accessible
+          = f.check_box :accessible, "data-toggle":"tooltip", "data-placement":"top", title:"Места для инвалюдов"
+          |Места для инвалюдов
+      .form-group.col-lg-6
+        = f.label :open24
+          = f.check_box :open24, "data-toggle":"tooltip", "data-placement":"top", title:"Открыто 24 часа"
+          |Открыто 24 часа
+    .row
+      .form-group.col-lg-6
+        = f.label :covered
+          = f.check_box :covered, "data-toggle":"tooltip", "data-placement":"top", title:"Крытая парковка"
+          |Крытая парковка
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :adress
-    = f.text_field :adress
-  .field
-    = f.label :latitude
-    = f.text_field :latitude
-  .field
-    = f.label :langitude
-    = f.text_field :langitude
-  .field
-    = f.label :accessible
-    = f.check_box :accessible
-  .field
-    = f.label :open24
-    = f.check_box :open24
-  .field
-    = f.label :covered
-    = f.check_box :covered
-  .field
-    = f.label :sitestaff
-    = f.check_box :sitestaff
-  .field
-    = f.label :overnight
-    = f.check_box :overnight
-  .field
-    = f.label :valet
-    = f.check_box :valet
-  .field
-    = f.label :restrictions
-    = f.check_box :restrictions
-  .field
-    = f.label :descriptions
-    = f.check_box :descriptions
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :typerent
-    = f.check_box :typerent
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions = f.submit
+      .form-group.col-lg-6
+        = f.label :sitestaff
+          = f.check_box :sitestaff, "data-toggle":"tooltip", "data-placement":"top", title:"Сотрудники на сайте"
+          |Сотрудники на сайте
+    .row
+      .form-group.col-lg-6
+        = f.label :overnight
+          = f.check_box :overnight, "data-toggle":"tooltip", "data-placement":"top", title:"Ночная"
+          |Ночная
+      .form-group.col-lg-6
+        = f.label :valet
+          = f.check_box :valet, "data-toggle":"tooltip", "data-placement":"top", title:"Парковщик"
+          |Парковщик
+    .row
+      .form-group.col-lg-6
+        = f.label :restrictions
+          = f.check_box :restrictions, "data-toggle":"tooltip", "data-placement":"top", title:"Ограничения"
+          |Ограничения
+      .form-group.col-lg-6
+        = f.label :descriptions
+          = f.check_box :descriptions, "data-toggle":"tooltip", "data-placement":"top", title:"Дополнительные условия"
+          |Дополнительные условия
+    .form-group
+      = f.label :price, 'Цена за место'
+      = f.text_field :price, class:"form-control"
+    .form-group[style="display: none"]
+      = f.label :typerent
+        = f.check_box :typerent
+    .form-group
+      = f.label :user, "Пользователь"
+      = f.text_field :user, class:"form-control"
+
+    .form-group
+      = f.label :image, "Добавить фото"
+      = f.file_field :image, type:"file",name:"parking[image][]", multiple:true, class:'file-loading'
+
+    .form-group
+      = f.label :image, "Добавить фото"
+
+      = react_component 'Fileinput', {id:'parking_image', nameClass:'file-loading', name:'parking[image][]', multiple:'multiple'}
+
+    .actions
+      = f.submit

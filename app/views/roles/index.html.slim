@@ -1,11 +1,11 @@
-h1 Listing roles
+h1 Список ролей
 
-table
+table.table.table-striped
   thead
     tr
-      th Code
-      th Name
-      th Descriptions
+      th Код
+      th Наименование
+      th Описание
       th
       th
       th
@@ -16,10 +16,10 @@ table
         td = role.code
         td = role.name
         td = role.descriptions
-        td = link_to 'Show', role
-        td = link_to 'Edit', edit_role_path(role)
-        td = link_to 'Destroy', role, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Открыть', role, class:"btn btn-success"
+        td = link_to 'Редактировать', edit_role_path(role), class:"btn btn-warning"
+        td = link_to 'Удалить', role, data: {:confirm => 'Вы уверены?'}, :method => :delete, class:"btn btn-danger"
 
 br
 
-= link_to 'New Role', new_role_path
+= link_to 'Новая роль', new_role_path, class:"btn btn-success"

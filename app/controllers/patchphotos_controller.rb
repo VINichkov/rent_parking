@@ -69,6 +69,6 @@ class PatchphotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patchphoto_params
-      params.require(:patchphoto).permit(:patch, :parking_id)
+      params.require(:patchphoto).permit(:parking_id, :image)
     end
 end

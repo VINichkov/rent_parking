@@ -31,7 +31,12 @@ gem 'devise'
 gem 'cancancan'
 
 gem 'http_accept_language'
+gem 'dragonfly'
 
+# Подключение react js
+gem 'react-rails'
+gem 'mongoid'
+gem 'bson'
 #gem 'foundation-rails'
 
 # Use ActiveModel has_secure_password

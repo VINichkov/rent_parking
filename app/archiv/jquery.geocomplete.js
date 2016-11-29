@@ -11,7 +11,6 @@
 //
 // * https://github.com/ubilabs/geocomplete/
 // * by Martin Kleppe <kleppe@ubilabs.net>
-//Переписала
 
 (function($, window, document, undefined){
 
@@ -100,7 +99,7 @@
     this.init();
   }
 
-  // Initialize all parts of the plugin.
+  //
   $.extend(GeoComplete.prototype, {
     init: function(){
       this.initMap();
@@ -462,7 +461,7 @@
         });
       });
 
-      // Add properties of the places details.
+      // Add properts of the places details.
       $.each(placesDetails, function(index, key){
         data[key] = result[key];
       });

@@ -1,10 +1,18 @@
 class ParkingsController < ApplicationController
   before_action :set_parking, only: [:show, :edit, :update, :destroy]
+  layout 'admin'
 
   # GET /parkings
   # GET /parkings.json
   def index
     @parkings = Parking.all
+  end
+
+  def index_json
+    @parkings = []
+    Parking.all.each do |elem|
+      @parkings <<  {lat:elem.latitude, lng:elem.langitude, title:elem.name}
+    end
   end
 
   # GET /parkings/1
@@ -24,12 +32,28 @@ class ParkingsController < ApplicationController
   # POST /parkings
   # POST /parkings.json
   def create
-    @parking = Parking.new(parking_params)
-
+    param = parking_params
+    @parking = Parking.new(param)
     respond_to do |format|
       if @parking.save
-        format.html { redirect_to @parking, notice: 'Parking was successfully created.' }
-        format.json { render :show, status: :created, location: @parking }
+        flag = true
+        @images.each do |image|
+          @potos = Patchphoto.new(parking_id:@parking.id,image:image)
+          unless @potos.save
+            Patchphoto.find_by_parking_id(@parking.id).each do |image|
+              image.delete
+            end
+            @parking.delete
+            flag = false
+          end
+        end
+        if flag
+          format.html { redirect_to(@parking, notice: 'Parking was successfully created.') }
+          format.json { render :show, status: :created, location: @parking }
+        else
+          format.html { render :new }
+          format.json { render json: @potos.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @parking.errors, status: :unprocessable_entity }
@@ -69,6 +93,12 @@ class ParkingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parking_params
+      @images=[]
+      if !params[:parking][:image].nil? then
+        params[:parking][:image].each do |image|
+          @images<<image
+        end
+      end
       params.require(:parking).permit(:name, :adress, :latitude, :langitude, :accessible, :open24, :covered, :sitestaff, :overnight, :valet, :restrictions, :descriptions, :price, :typerent, :user_id)
     end
 end

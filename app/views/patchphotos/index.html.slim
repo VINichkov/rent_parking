@@ -12,7 +12,7 @@ table
   tbody
     - @patchphotos.each do |patchphoto|
       tr
-        td = patchphoto.patch
+        td = image_tag patchphoto.image.thumb('400x200#').url if patchphoto.image_stored?
         td = patchphoto.parking
         td = link_to 'Show', patchphoto
         td = link_to 'Edit', edit_patchphoto_path(patchphoto)
